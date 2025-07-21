@@ -1,0 +1,14 @@
+{
+    "entries": [
+        {
+            "additional_clause_name": "Whereas Clauses",
+            "additional_clause": "Whereas, the Employee is employed by [Abbreviation Name Party 1] according to an employment contract between the Parties dated [Date of employment contract], whereby this Agreement is an annex and integral part of the employment contract between the Parties;\n\nWhereas the Employee has access to and knowledge of Confidential Information (as defined below) about [Abbreviation Name Party 1] and other employees of [Abbreviation Name Party 1] in the course of his or her employment;\n\nWhereas, the Employee undertakes to maintain the confidentiality of Confidential Information made accessible to him,",
+            "legal_impact": "These recitals formally bind the NDA obligations to the existing employment relationship, reinforcing the employer's ability to enforce confidentiality and potentially expanding the employee\u2019s obligations under labor law."
+        },
+        {
+            "additional_clause_name": "Remedies Clause",
+            "additional_clause": "Remedies\n\nThe Employee acknowledges that [Abbreviation Name Party 1] considers any breach of any of the obligations in Article 2 to be a gross breach of the Employee\u2019s duty of loyalty under labour law. Accordingly, such behavior will be sanctioned and [Abbreviation Name Party 1] reserves the right that gross breaches of the obligations in Article 2 may result in dismissal without notice in accordance with the employment contract between the Parties.",
+            "legal_impact": "This clause allows immediate dismissal for confidentiality breaches. It provides a strong deterrent but could pose legal risks if local labor law imposes stricter conditions for dismissal or if the 'gross breach' threshold is disputed."
+        }
+    ]
+}

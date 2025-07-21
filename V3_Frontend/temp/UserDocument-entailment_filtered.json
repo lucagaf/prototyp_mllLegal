@@ -1,0 +1,162 @@
+[
+    {
+        "clause_name": "confidential_information",
+        "clause_subname": "clause",
+        "input_clause": "Confidential Information shall mean, irrespective of whether it has been designated as such, any information and documentation disclosed by a Party to the other Party or any of its affiliates or directors, officers, employees, or external advisors with regard to and/or in connection with the Transaction, including but not limited to any financial, commercial, business, technical, legal or tax information, whether communicated orally, in writing, in electronic form or by any other media. The Parties shall further consider as Confidential Information the existence of this Agreement, the fact that the Parties consider entering into discussions regarding the Transaction and the Transaction itself. The Parties acknowledge that any rights related to Confidential Information remain with the disclosing Party, in particular but not limited to intellectual property rights.",
+        "retrieved_clauses": [
+            {
+                "clause": "is not generally known and in which [Abbreviation Name Party 1] has an interest in confidentiality for itself or for one of its business partners, including without limitation any internal data, commercial, technical or/and financial, interpretations, investigation structures, employee's lists, [Abbreviation Name Party 1] Member lists, other information regarding [Abbreviation Name Party 1] Members, certain methods of doing business, business plans, contracts, client, customer lists, and the terms and conditions of this Agreement, the existence of any and all negotiations and discussions relating to this Agreement and any other proprietary, confidential or other non-public information of whatever nature made available to the Employee, including information that the Employee knew, or should have known, was confidential. This also includes information and facts that do not in themselves have the character of Confidential Information, but which become such when additional information is added;",
+                "confidence": 0.9491173028945923
+            },
+            {
+                "clause": "The Employee undertakes to treat Confidential Information as strictly confidential. The Employee takes all necessary precautions to ensure that unauthorised persons, other employees, subcontractors, suppliers, customers, consultants and other business partners of [Abbreviation Name Party 1] cannot gain knowledge of or access to Confidential Information, unless they require Confidential Information for the fulfilment of their duties for [Abbreviation Name Party 1] and this has been agreed with the direct superior of the Employee.",
+                "confidence": 0.9144131541252136
+            },
+            {
+                "clause": "The Employee agrees not to use or disclose, directly or indirectly, any Confidential Information at any time or in any manner, except as required in the course and scope of employment with [Abbreviation Name Party 1] pursuant to procedures which will ensure maintenance of the secrecy of Confidential Information or after consultation with the direct superior of the Employee.",
+                "confidence": 0.913695216178894
+            }
+        ],
+        "answer": "Entailment"
+    },
+    {
+        "clause_name": "confidentiality_obligations",
+        "clause_subname": "clause",
+        "input_clause": "2.1    Each Party undertakes and will cause (i) its affiliates, and (ii) its and its affiliates' directors, officers, employees, or external advisors whom it may need to share the Confidential Information with: a. to keep the Confidential Information strictly confidential; b. not to disclose the Confidential Information to any third party other than its or its affiliates' directors, officers, employees or external advisors, provided that each of these persons (i) needs to know the Confidential Information for the purposes of the Transaction and (ii) undertakes to adhere to the terms of this Agreement or is bound by professional or other confidentiality obligations at least equivalent to the ones set out in this Agreement; c. not to use the Confidential Information except solely for the purposes of the Transaction, unless such further use of the Confidential Information is specifically authorized in writing by the disclosing Party; and d. to keep the Confidential Information and any copies thereof secure and in such a way as to prevent unauthorized access by any third party.",
+        "retrieved_clauses": [
+            {
+                "clause": "The Employee undertakes to treat Confidential Information as strictly confidential. The Employee takes all necessary precautions to ensure that unauthorised persons, other employees, subcontractors, suppliers, customers, consultants and other business partners of [Abbreviation Name Party 1] cannot gain knowledge of or access to Confidential Information, unless they require Confidential Information for the fulfilment of their duties for [Abbreviation Name Party 1] and this has been agreed with the direct superior of the Employee.",
+                "confidence": 0.9370438456535339
+            },
+            {
+                "clause": "The Employee agrees not to use or disclose, directly or indirectly, any Confidential Information at any time or in any manner, except as required in the course and scope of employment with [Abbreviation Name Party 1] pursuant to procedures which will ensure maintenance of the secrecy of Confidential Information or after consultation with the direct superior of the Employee.",
+                "confidence": 0.9136320948600769
+            },
+            {
+                "clause": "All documents and products relating to Confidential Information, whether prepared by the Employee or otherwise coming into the Employee\u2019s possession, are the exclusive property of [Abbreviation Name Party 1], and must not be removed from [Abbreviation Name Party 1]\u2019s premises except as required in the course of employment with [Abbreviation Name Party 1] and pursuant to applicable procedures. All such documents and products must be returned to [Abbreviation Name Party 1] prior to the time employment is terminated with [Abbreviation Name Party 1].",
+                "confidence": 0.9022352695465088
+            }
+        ],
+        "answer": "Entailment"
+    },
+    {
+        "clause_name": "data_protection",
+        "clause_subname": "clause",
+        "input_clause": "Each Party acknowledges that the Confidential Information may contain personal data which is subject to the Swiss Federal Data Protection Act, its ordinance and any other applicable data protection regulations or laws. Each Party agrees to comply with such applicable laws and have adequate measures in place to ensure that its directors, officers and employees fully comply with the provisions and obligations contained in such laws and the corresponding ordinances. The Parties conclude a separate agreement governing the processing of personal data during the Transaction if personal data is processed during the Transaction.",
+        "retrieved_clauses": [
+            {
+                "clause": "For Confidential Information that also constitutes personal data within the meaning of data protection legislation, the provisions of [Abbreviation Name Party 1]\u2019s privacy policy, privacy policy for employees and the applicable data protection law (General Data Protection Regulation (GDPR) of the European Union and/or Swiss data protection law) also apply.",
+                "confidence": 0.9284452199935913
+            },
+            {
+                "clause": "The Employee undertakes to treat Confidential Information as strictly confidential. The Employee takes all necessary precautions to ensure that unauthorised persons, other employees, subcontractors, suppliers, customers, consultants and other business partners of [Abbreviation Name Party 1] cannot gain knowledge of or access to Confidential Information, unless they require Confidential Information for the fulfilment of their duties for [Abbreviation Name Party 1] and this has been agreed with the direct superior of the Employee.",
+                "confidence": 0.925055980682373
+            },
+            {
+                "clause": "Notwithstanding the confidentiality obligation and use restriction of this Article\u00a02, the Employee may disclose Confidential Information pursuant to an administrative or judicial order or mandatory legal requirements, in which case the Employee must inform his/her direct supervisor as soon as possible unless such information is prohibited by the relevant law due to an important public interest.",
+                "confidence": 0.924689769744873
+            }
+        ],
+        "answer": "Entailment"
+    },
+    {
+        "clause_name": "term_of_agreement",
+        "clause_subname": "clause",
+        "input_clause": "This Agreement shall remain in force and effect as from signing and for a period of [three] years thereafter. The Parties acknowledge that trade secrets must be kept confidential by law even after the expiry of this Agreement.",
+        "retrieved_clauses": [
+            {
+                "clause": "The Employee\u2019s obligations under this paragraph are continuiung and shall survive termination of the Employee\u2019s employment with [Abbreviation Name Party 1] until Confidential Information no longer qualifies as such according to Article\u00a01.2 or until [Abbreviation Name Party 1] sends written notice releasing the Employee from this Agreement, whichever occurs first.",
+                "confidence": 0.9378064274787903
+            },
+            {
+                "clause": "Article 2.8 of this Agreement applies to the duration of the confidentiality obligation for Confidential Information received by the Employee prior to the termination of the Employee\u2019s employment contract with [Abbreviation Name Party 1].",
+                "confidence": 0.9178377985954285
+            },
+            {
+                "clause": "The Employee acknowledges that [Abbreviation Name Party 1] considers any breach of any of the obligations in Article 2 to be a gross breach of the Employee\u2019s duty of loyalty under labour law. Accordingly, such behavior will be sanctioned and [Abbreviation Name Party 1] reserves the right that gross breaches of the obligations in Article 2 may result in dismissal without notice in accordance with the employment contract between the Parties.",
+                "confidence": 0.9125099778175354
+            }
+        ],
+        "answer": "Entailment"
+    },
+    {
+        "clause_name": "miscellaneous",
+        "clause_subname": "amendments",
+        "input_clause": "10.1   Amendments, supplements or rescissions of provisions of this Agreement shall be in writing and require the mutual agreement of both Parties to be valid. An amendment of this obligation requires itself a written agreement in order to be valid.",
+        "retrieved_clauses": [
+            {
+                "clause": "This Agreement can be modified only by a written amendment signed by the Parties.",
+                "confidence": 0.9230898022651672
+            },
+            {
+                "clause": "The Employee\u2019s obligations under this paragraph are continuiung and shall survive termination of the Employee\u2019s employment with [Abbreviation Name Party 1] until Confidential Information no longer qualifies as such according to Article\u00a01.2 or until [Abbreviation Name Party 1] sends written notice releasing the Employee from this Agreement, whichever occurs first.",
+                "confidence": 0.8970926403999329
+            },
+            {
+                "clause": "The Employee acknowledges that [Abbreviation Name Party 1] considers any breach of any of the obligations in Article 2 to be a gross breach of the Employee\u2019s duty of loyalty under labour law. Accordingly, such behavior will be sanctioned and [Abbreviation Name Party 1] reserves the right that gross breaches of the obligations in Article 2 may result in dismissal without notice in accordance with the employment contract between the Parties.",
+                "confidence": 0.8874524235725403
+            }
+        ],
+        "answer": "Entailment"
+    },
+    {
+        "clause_name": "miscellaneous",
+        "clause_subname": "Severability",
+        "input_clause": "10.6   The provisions of this Agreement shall be construed so as to be valid and enforceable according to applicable law. Should any provision hereof be unenforceable or invalid according to applicable law, it shall only be unenforceable or void to the extent of such unenforceability or invalidity and shall for the remaining be replaced by a valid and enforceable provision which shall satisfy the legal and economic meaning/result of the ineffective provision. The remaining provisions of this Agreement remain binding and in full force. The same shall apply in case of incompleteness of this Agreement.",
+        "retrieved_clauses": [
+            {
+                "clause": "If any provision of this Agreement is held to be unenforceable or invalid, such provision shall be deemed severable only to the extent of such unenforceability or invalidity and shall in all other respects be replaced by a valid and enforceable provision that reflects as nearly as possible the legal and economic intent of the invalid provision. The remaining provisions of this Agreement shall remain binding and in force.",
+                "confidence": 0.922276496887207
+            },
+            {
+                "clause": "The Employee\u2019s obligations under this paragraph are continuiung and shall survive termination of the Employee\u2019s employment with [Abbreviation Name Party 1] until Confidential Information no longer qualifies as such according to Article\u00a01.2 or until [Abbreviation Name Party 1] sends written notice releasing the Employee from this Agreement, whichever occurs first.",
+                "confidence": 0.890505313873291
+            },
+            {
+                "clause": "The Employee acknowledges that [Abbreviation Name Party 1] considers any breach of any of the obligations in Article 2 to be a gross breach of the Employee\u2019s duty of loyalty under labour law. Accordingly, such behavior will be sanctioned and [Abbreviation Name Party 1] reserves the right that gross breaches of the obligations in Article 2 may result in dismissal without notice in accordance with the employment contract between the Parties.",
+                "confidence": 0.8815200328826904
+            }
+        ],
+        "answer": "Entailment"
+    },
+    {
+        "clause_name": "governing_law",
+        "clause_subname": "clause",
+        "input_clause": "This Agreement shall be governed by and construed in accordance with the substantive laws of Switzerland, to the exclusion of the principles of conflicts of laws thereof.",
+        "retrieved_clauses": [
+            {
+                "clause": "The construction, performance of this Agreement, and any dispute which arises out of or in connection with this Agreement shall be governed by the substantive laws of [country]. The Parties hereby submit to the exclusive jurisdiction of [Jurisdiction], as regards any claim or matter arising out of or in connection with this contract.",
+                "confidence": 0.8626770377159119
+            },
+            {
+                "clause": "Subject to Article 6.3, this Agreement shall end upon termination of the employment relationship between the Parties.",
+                "confidence": 0.7989935874938965
+            },
+            {
+                "clause": "[Name Party 1], an Association duly organized and existing under the laws of Switzerland, having its offices at [address].",
+                "confidence": 0.7931820750236511
+            }
+        ],
+        "answer": "Entailment"
+    },
+    {
+        "clause_name": "jurisdiction",
+        "clause_subname": "clause",
+        "input_clause": "Any dispute, controversy or claim arising out of or in relation to this Agreement or future non-contractual claims including the validity, invalidity, enforceability, interpretation, execution, breach, modification or termination thereof, shall be submitted to the exclusive jurisdiction of the courts of [not defined]. ",
+        "retrieved_clauses": [
+            {
+                "clause": "The construction, performance of this Agreement, and any dispute which arises out of or in connection with this Agreement shall be governed by the substantive laws of [country]. The Parties hereby submit to the exclusive jurisdiction of [Jurisdiction], as regards any claim or matter arising out of or in connection with this contract.",
+                "confidence": 0.935244083404541
+            },
+            {
+                "clause": "The Employee acknowledges that [Abbreviation Name Party 1] considers any breach of any of the obligations in Article 2 to be a gross breach of the Employee\u2019s duty of loyalty under labour law. Accordingly, such behavior will be sanctioned and [Abbreviation Name Party 1] reserves the right that gross breaches of the obligations in Article 2 may result in dismissal without notice in accordance with the employment contract between the Parties.",
+                "confidence": 0.8485497236251831
+            },
+            {
+                "clause": "is not generally known and in which [Abbreviation Name Party 1] has an interest in confidentiality for itself or for one of its business partners, including without limitation any internal data, commercial, technical or/and financial, interpretations, investigation structures, employee's lists, [Abbreviation Name Party 1] Member lists, other information regarding [Abbreviation Name Party 1] Members, certain methods of doing business, business plans, contracts, client, customer lists, and the terms and conditions of this Agreement, the existence of any and all negotiations and discussions relating to this Agreement and any other proprietary, confidential or other non-public information of whatever nature made available to the Employee, including information that the Employee knew, or should have known, was confidential. This also includes information and facts that do not in themselves have the character of Confidential Information, but which become such when additional information is added;",
+                "confidence": 0.8414624333381653
+            }
+        ],
+        "answer": "Entailment"
+    }
+]

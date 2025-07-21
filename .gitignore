@@ -208,5 +208,9 @@ __marimo__/
 
 
 .DS_Store
- *.idea/
- .idea/
+data/raw/*
+.idea/
+V3_Frontend/temp/*
+
+
+

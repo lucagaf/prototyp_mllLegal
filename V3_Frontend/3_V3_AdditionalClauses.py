@@ -7,6 +7,7 @@ import sys
 import openai
 import json
 import docx2txt
+from config import BASEDIR
 
 current_dir = os.path.dirname(__file__)
 project_root = os.path.abspath(os.path.join(current_dir, "../../"))

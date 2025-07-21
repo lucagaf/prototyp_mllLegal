@@ -25,16 +25,15 @@ st.set_page_config(page_title="Doc Analyzer", layout="wide")
 
 st.title("Dependency Check")
 
-st.write("### Installed packages")
-installed = subprocess.check_output([sys.executable, "-m", "pip", "freeze"]).decode()
-st.code(installed)
+st.write(f"Python executable: {sys.executable}")
+st.write(f"Python version: {sys.version}")
+st.write(f"sys.path: {sys.path}")
 
-st.write("### Test python-docx import")
 try:
-    from docx import Document
-    st.success("✅ python-docx is installed and importable!")
-except ModuleNotFoundError as e:
-    st.error(f"❌ python-docx NOT installed: {e}")
+    import docx
+    st.write("docx package found!")
+except ImportError:
+    st.write("docx package NOT found in this environment.")
 
 st.title("Legal Document Analyzer")
 st.markdown("""

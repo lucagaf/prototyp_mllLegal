@@ -123,7 +123,7 @@ def main():
     # Define the pipeline steps and their corresponding Python scripts
 
     pipeline_steps = [
-        ("Running Step 1: '1_V3_RAG for top-k missing.py'...", Path(args.basedir) / "V3_Frontend/1_V3_RAG for top-k missing.py"),
+        ("Running Step 1: '1_V3_RAG for top-k missing.py'...", Path(args.basedir) / "V3_Frontend/1_V3_RAG.py"),
         ("Running Step 2: '2_V3_deviatingClauses.py'...", Path(args.basedir) / "V3_Frontend/2_V3_deviatingClauses.py"),
         ("Running Step 3: '3_V3_AdditionalClauses.py'...", Path(args.basedir) / "V3_Frontend/3_V3_AdditionalClauses.py")
     ]

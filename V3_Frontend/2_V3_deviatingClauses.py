@@ -13,7 +13,7 @@ if project_root not in sys.path:
     sys.path.insert(0, project_root)
 from utils import initialize_openai_client
 
-from config import OPENAI_MODEL_DEVIATING, SAMPLE_DOC, PROCESS_STEP1_JSON, PROCESS_STEP2_JSON
+from config import OPENAI_MODEL_DEVIATING, SAMPLE_DOC, PROCESS_STEP1_JSON, PROCESS_STEP2_JSON, BASEDIR
 
 SAMPLE = SAMPLE_DOC.split(".")[0]
 

@@ -149,6 +149,14 @@ if uploaded_doc:
 
 
     if run_sub:
+        if not openai_api_key:
+            st.error("❌ Please enter your OpenAI API key in the sidebar.")
+            st.stop()
+
+        if not control_contractType:
+            st.error("❌ Please select a contract type in the sidebar.")
+            st.stop()
+
         upload_placeholder.empty()
         buttons_placeholder.empty()
 

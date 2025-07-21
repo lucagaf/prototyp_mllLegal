@@ -18,7 +18,7 @@ project_root = os.path.abspath(os.path.join(current_dir, "../../"))
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
 
-from utils.openAI_client import initialize_openai_client
+from utils import initialize_openai_client
 from config import SAMPLE_DOC, MODEL_NAME, DOC_PATH, OPENAI_MODEL_MISSING, RETRIEVED_K, PROCESS_STEP1_JSON
 
 EMBEDDING_MODEL = SentenceTransformer(MODEL_NAME)
@@ -99,7 +99,7 @@ def save_retrieved_clauses_to_json(retrieved_clauses_list, filename="retrieved_c
 
 
 
-def get_openai_response(clause:RetrievedClause, openai_client, thread_id, opik_client, OPENAI_MODEL="gpt-4o-2024-08-06"):
+def get_openai_response(clause:RetrievedClause, openai_client, thread_id, opik_client, OPENAI_MODEL):
     """
     Gets a response from OpenAI using the input clause and retrieved clauses with confidence scores.
 
@@ -174,7 +174,8 @@ if __name__ == "__main__":
     index, paragraphs = initialize_faiss_index(DOC_PATH, EMBEDDING_MODEL)
     openai_client = initialize_openai_client()
     current_directory = os.path.dirname(__file__)
-    json_file_path = os.path.join(current_directory, "../../datasets/V3 - Template Clause MLL.json")
+    json_file_path = os.path.join(current_directory, "data/V3 - Template Clause MLL.json")
+    json_file_path = "data/V3 - Template Clause MLL.json"
     retrieved_clauses_list = extract_clauses_from_json(json_file_path)
 
     for clause_query in retrieved_clauses_list:
@@ -198,7 +199,7 @@ if __name__ == "__main__":
     opik_client.end()
     save_retrieved_clauses_to_json(retrieved_clauses_list, PROCESS_STEP1_JSON)
 
-    execution_details_path = 'src/models/V3_Frontend/temp/execuation_details.json'
+    execution_details_path = 'V3_Frontend/temp/execuation_details.json'
     with open(execution_details_path, 'r+', encoding='utf-8') as file:
         execution_details = json.load(file)
         execution_details['steps'][0]['input_tokens'] = input_tokens

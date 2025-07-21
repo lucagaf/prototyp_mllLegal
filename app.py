@@ -3,7 +3,7 @@ import time
 import streamlit as st
 import pandas as pd
 import numpy as np
-import altair as alt
+# import altair as alt
 import os
 import sys
 import tempfile
@@ -39,39 +39,79 @@ with st.expander("How does it work?"):
 
 # --------------  sidebar controls --------------
 st.sidebar.header("Settings")
+
+openai_api_key = st.sidebar.text_input('Key')
 control_contractType = st.sidebar.selectbox(
-    "Select Contract Type", ["NDA", "SPA", "SLA"],
+    "Select Contract Type", ["NDA", "SPA (not implemented yet)", "SLA (not implemented yet)"],
     index=None,  #start empty
     placeholder="Select Contract Type"
     #default=["A", "B"]
 )
 
 # Add a selectbox for User and Developer
-user_type = st.sidebar.selectbox("Select User Type", ["User", "Developer"], index=0)
+model_typ = st.sidebar.selectbox("Select openAI model Type", ["o1", "GPT-4.1", "gpt-4.1-mini"], index=0)
 openai_model = "o1-2024-12-17"
-if user_type == "Developer":
-    # Allow the developer to choose an OpenAI model
-    openai_model = st.sidebar.selectbox(
-        "Select OpenAI Model",
-        ["o4-mini-2025-04-16", "gpt-4o-2024-08-06", "o1-2024-12-17", "gpt-4.1-2025-04-14"]
-    )
-    st.write(f"Selected OpenAI Model: {openai_model}")
+if model_typ == "o1":
+    openai_model = "o1-2024-12-17"
+elif model_typ == "GPT-4.1":
+    openai_model = "gpt-4.1-2025-04-14"
+elif model_typ == "gpt-4.1-mini":
+    openai_model = "gpt-4.1-mini-2025-04-14"
+
+
 
 if control_contractType == "NDA":  # Check if a selection has been made
-    control_lcontract_type = st.sidebar.radio("Which contract type should be used?", ["Bilateral", "Unilateral"])
+    with st.sidebar:
+        st.write("---")
+        st.info(
+            "**Note:** This section is currently not implemented, "
+            "but could be added in a future version if desired."
+        )
 
-    control_llisting_six = st.sidebar.radio("Is the company listed on the SIX?", ["Yes", "No"])
+        control_lcontract_type = st.sidebar.radio("Which contract type should be used?", ["Bilateral", "Unilateral"])
+
+        control_llisting_six = st.sidebar.radio("Is the company listed on the SIX?", ["Yes", "No"])
 
 
-    control_listing_six = st.sidebar.radio("Which formulation is necessary for this contract", ["Neutral", "Strong", "Mild"])
+        control_listing_six = st.sidebar.radio("Which formulation is necessary for this contract", ["Neutral", "Strong", "Mild"])
+    with st.sidebar:
+       st.sidebar.header("Anonymization Settings")
+       # Initialize session state for name-abbreviation pairs
+       st.write(
+           "Enter full names and their desired abbreviations for anonymization. "
+           "Full names will not be sent to OpenAI."
+       )
+       # Two simple fixed input pairs
+       full_name_1 = st.text_input("Full Name 1", key="full_name_1")
+       abbr_1 = st.text_input("Abbreviation 1", key="abbr_1")
+
+       full_name_2 = st.text_input("Full Name 2", key="full_name_2")
+       abbr_2 = st.text_input("Abbreviation 2", key="abbr_2")
+
+       # Build a dictionary only for filled entries
+       anonymization_dict = {}
+       if full_name_1 and abbr_1:
+           anonymization_dict[abbr_1] = full_name_1
+       if full_name_2 and abbr_2:
+           anonymization_dict[abbr_2] = full_name_2
 
     # Display a summary of the selected parameters
     st.markdown("### Summary of Selected Parameters")
     st.write(f"- **Contract Type**: {control_contractType}")
+    st.write(f"- **Selected OpenAI Model**: {openai_model}")
+    st.write("---")
+    st.write(f"⚠️ Parameters that are currently not implemented and will not be used in the analysis:")
     st.write(f"- **Contract Usage**: {control_lcontract_type}")
     st.write(f"- **Listed on SIX**: {control_llisting_six}")
     st.write(f"- **Formulation**: {control_listing_six}")
-
+    st.text(" ")
+    st.write("**Current Anonymization Mapping**")
+    if anonymization_dict:
+        for abbr, fullname in anonymization_dict.items():
+            st.write(f"- **{fullname}** → {abbr}")
+    else:
+        st.write("No anonymization pairs set yet.")
+    st.write("---")
 # --------------  file upload --------------
 
 st.subheader("Upload the NDA document")
@@ -101,26 +141,16 @@ if uploaded_doc:
     buttons_placeholder = st.empty()
     pipeline_steps = st.empty()
     with buttons_placeholder.container():
-        #run_sub = st.button("▶️ Run as Developer", key="subproc")
-        run_sub = None
+        run_sub = st.button("▶️ Run Analysis", key="subproc")
+        #run_sub = None
         #run_direct = st.button("▶️ Run pipeline (direct import)", key="direct")
-        run_direct = False
-        dont = st.button("▶️ Run Contract Analysis", key="dev")
+        #run_direct = False
 
 
 
-    if run_sub or run_direct or dont:
+    if run_sub:
         upload_placeholder.empty()
         buttons_placeholder.empty()
-
-        # latest_iteration = st.empty()
-        # bar = st.progress(0)
-        # 
-        # for i in range(100):
-        #     # Update the progress bar with each iteration.
-        #     latest_iteration.text(f'Identifying clauses in the Contract.')
-        #     bar.progress(i + 1)
-        #     time.sleep(0.1)
 
         step1_slot, step2_slot, step3_slot = st.empty(), st.empty(), st.empty()
 
@@ -138,21 +168,30 @@ if uploaded_doc:
                 if run_sub:
                     cmd = [
                         sys.executable,  # ensures same Python interpreter
-                        "src/models/V3_Frontend/run_pipeline.py",  # your script
+                        "V3_Frontend/run_pipeline.py",  # your script
                         "-s", "UserDocument.docx",  # -s "Sample 2.docx"
                         "-d", dest,  # -s "Sample 2.docx"
                         "-a", openai_model,  # -a "gpt-4.1-2025-04-14"
                         "-b", openai_model,  # -b "gpt-4.1-2025-04-14"
                         "-c", openai_model,  # -c "gpt-4.1-2025-04-14"
+                        "-K", openai_api_key,
                     ]
                     result = subprocess.run(cmd, capture_output=True, text=True)
+
+                    if result.returncode != 0:
+                        st.error("❌ Pipeline failed!")
+                        st.write("**Error Output:**")
+                        st.code(result.stderr if result.stderr else "No error message provided.")
+                        # Optionally also show stdout for debugging
+                        if result.stdout:
+                            st.write("**Standard Output:**")
+                            st.code(result.stdout)
+                        st.stop()  # Stop further execution
+
                     output = result.stdout
-                elif run_direct:
-                    from src.models.V3_Frontend.run_pipeline import main
-                    output = main()
-                time.sleep(30)
+
                 st.success("✅ Pipeline finished successfully!")
-                BASE = Path("src/models/V3_Frontend")
+                BASE = Path("V3_Frontend")
                 with open(BASE / "temp/3_V3_additional_clauses.json", encoding="utf‑8") as f:
                     additional_raw = json.load(f)["entries"]
 
@@ -186,21 +225,6 @@ if uploaded_doc:
                 def get_best_retrieved_clause(retrieved_clauses):
                     """Return the retrieved clause dict with the highest confidence."""
                     return max(retrieved_clauses, key=lambda x: x["confidence"])
-
-
-                def OLD_mark_overlapping_text(modified, retrieved):
-                    s = SequenceMatcher(None, modified, retrieved)
-                    opcodes = s.get_opcodes()
-                    marked_text = ""
-                    for tag, i1, i2, j1, j2 in opcodes:
-                        segment = modified[i1:i2]
-                        # Highlight segments that do not match the retrieved clause
-                        if tag != 'equal' and segment.strip():
-                            marked_text += f"<font color='red'>{segment}</font>"
-                        else:
-                            marked_text += segment
-                    return marked_text
-
 
                 def mark_overlapping_text(modified, retrieved):
                     import re

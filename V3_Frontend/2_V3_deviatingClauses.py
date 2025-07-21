@@ -11,7 +11,7 @@ current_dir = os.path.dirname(__file__)
 project_root = os.path.abspath(os.path.join(current_dir, "../../"))
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
-from utils.openAI_client import initialize_openai_client
+from utils import initialize_openai_client
 
 from config import OPENAI_MODEL_DEVIATING, SAMPLE_DOC, PROCESS_STEP1_JSON, PROCESS_STEP2_JSON
 
@@ -159,10 +159,10 @@ def write_retrieved_clauses_to_file(retrieved_clauses, file_path):
 
 
 # When you want to output the file to the default location.
-total_entailment, filtered_entailment = filter_entailment_answers(f'src/models/V3_Frontend/{PROCESS_STEP1_JSON}', True)
+total_entailment, filtered_entailment = filter_entailment_answers(f'V3_Frontend/{PROCESS_STEP1_JSON}', True)
 #print(f"Total objects: {total_entailment}, Filtered objects (entailment): {filtered_entailment}")
 
-total_missing, filtered_missing = filter_missing_answers(f'src/models/V3_Frontend/{PROCESS_STEP1_JSON}', True)
+total_missing, filtered_missing = filter_missing_answers(f'V3_Frontend/{PROCESS_STEP1_JSON}', True)
 #print(f"Total objects: {total_missing}, Filtered objects: {filtered_missing}")
 
 
@@ -172,7 +172,7 @@ assert filtered_entailment + filtered_missing == total_entailment, "Both filtere
 
 
 
-with open(f'src/models/V3_Frontend/temp/{SAMPLE}-entailment_filtered.json', 'r', encoding='utf-8') as file:
+with open(f'V3_Frontend/temp/{SAMPLE}-entailment_filtered.json', 'r', encoding='utf-8') as file:
     clauses_data = json.load(file)
 
 retrieved_clause_objects = []
@@ -205,9 +205,9 @@ for obj in retrieved_clause_objects:
     total_tokens += total_tokens
     print(f"Modified Clause: {obj.modified_clause}")
 
-status = write_retrieved_clauses_to_file(retrieved_clause_objects, f'src/models/V3_Frontend/{PROCESS_STEP2_JSON}')
+status = write_retrieved_clauses_to_file(retrieved_clause_objects, f'V3_Frontend/{PROCESS_STEP2_JSON}')
 
-execution_details_path = 'src/models/V3_Frontend/temp/execuation_details.json'
+execution_details_path = 'V3_Frontend/temp/execuation_details.json'
 with open(execution_details_path, 'r+', encoding='utf-8') as file:
     execution_details = json.load(file)
     execution_details['steps'][1]['input_tokens'] = input_tokens

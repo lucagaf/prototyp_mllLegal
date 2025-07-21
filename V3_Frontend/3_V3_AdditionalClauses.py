@@ -12,7 +12,7 @@ current_dir = os.path.dirname(__file__)
 project_root = os.path.abspath(os.path.join(current_dir, "../../"))
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
-from utils.openAI_client import initialize_openai_client
+from utils import initialize_openai_client
 
 # Function to load the template NDA from a JSON file.
 def load_template_nda(json_path):
@@ -100,7 +100,7 @@ def identify_additional_clauses(
 
 
 
-MLL_NDA = load_template_nda("/Users/luca/Documents/HSLU/Bachelor Thesis/thesis_luca_gafner/src/datasets/V3 - Template Clause MLL.json")
+MLL_NDA = load_template_nda("data/V3 - Template Clause MLL.json")
 EXTERNAL_NDA = read_docx(DOC_PATH)
 
 print(f'Additional / Path: {DOC_PATH}')
@@ -123,7 +123,7 @@ output_path = os.path.join(temp_dir, "3_V3_additional_clauses.json")
 with open(output_path, 'w', encoding='utf-8') as out_file:
     json.dump(content, out_file, indent=4)
 
-execution_details_path = 'src/models/V3_Frontend/temp/execuation_details.json'
+execution_details_path = 'V3_Frontend/temp/execuation_details.json'
 with open(execution_details_path, 'r+', encoding='utf-8') as file:
     execution_details = json.load(file)
     execution_details['steps'][2]['input_tokens'] = input_tokens

@@ -10,7 +10,10 @@ import os
 import subprocess
 import time
 import json
+import openai
 from path import Path
+from opik.integrations.openai import track_openai
+from opik import Opik
 
 def main():
     parser = argparse.ArgumentParser(
@@ -63,6 +66,11 @@ def main():
         default=None,
         help="Output JSON filename for step 2 (default: auto-generated)"
     )
+    parser.add_argument(
+        "--openai_key", "-K",
+        default=None,
+        help="OpenAI API key"
+    )
 
     args = parser.parse_args()
 
@@ -98,18 +106,19 @@ def main():
     os.environ["RETRIEVED_K"] = str(args.retrieved_k)
     os.environ["PROCESS_STEP1_JSON"] = args.step1_json
     os.environ["PROCESS_STEP2_JSON"] = args.step2_json
+    os.environ["OPENAI_API_KEY"] = args.openai_key
 
     # Define the pipeline steps and their corresponding Python scripts
 
+
     pipeline_steps = [
-        ("Running Step 1: '1_V3_RAG for top-k missing.py'...", "src/models/V3_Frontend/1_V3_RAG for top-k missing.py"),
-        ("Running Step 2: '2_V3_deviatingClauses.py'...", "src/models/V3_Frontend/2_V3_deviatingClauses.py"),
-        ("Running Step 3: '3_V3_AdditionalClauses.py'...", "src/models/V3_Frontend/3_V3_AdditionalClauses.py")
+        ("Running Step 1: '1_V3_RAG for top-k missing.py'...", "V3_Frontend/1_V3_RAG for top-k missing.py"),
+        ("Running Step 2: '2_V3_deviatingClauses.py'...", "V3_Frontend/2_V3_deviatingClauses.py"),
+        ("Running Step 3: '3_V3_AdditionalClauses.py'...", "V3_Frontend/3_V3_AdditionalClauses.py")
     ]
     # 2) Prepare output JSON
     output_path = Path(
-        "/Users/luca/Documents/HSLU/Bachelor Thesis/"
-        "thesis_luca_gafner/src/models/V3_Frontend/temp/execuation_details.json"
+        "V3_Frontend/temp/execuation_details.json"
     )
     #output_path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -165,13 +174,15 @@ def main():
 
     print("Pipeline execution completed.")
 
-    message, script = ("Running Step 4: '4_PDF Generator.py'...", "src/models/V3_Frontend/4_PDF Generator.py")
+    message, script = ("Running Step 4: '4_PDF Generator.py'...", "V3_Frontend/4_PDF Generator.py")
 
     print(message)
     result = subprocess.run(["python", script])
     if result.returncode != 0:
         print(f"Error: {script} exited with return code {result.returncode}")
         exit(result.returncode)
+
+
 
 if __name__ == "__main__":
     main()

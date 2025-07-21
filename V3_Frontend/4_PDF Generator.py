@@ -7,17 +7,20 @@ from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Flowable
+import json
+import re
+from reportlab.platypus import Paragraph, Spacer
 
 SHORT_MODEL_NAME = MODEL_NAME.split("/")[1]  # Extract the first part of the model name
 #SHORT_MODEL_NAME = MODEL_NAME
 
 # --- Step 1: Load the JSON data ---
-deviating_file = f'src/models/V3_Frontend/{PROCESS_STEP2_JSON}'
+deviating_file = f'V3_Frontend/{PROCESS_STEP2_JSON}'
 with open(deviating_file, "r", encoding="utf-8") as file:
     deviating_data = json.load(file)
 
 
-missing_file = f'src/models/V3_Frontend/{PROCESS_STEP1_JSON}'
+missing_file = f'V3_Frontend/{PROCESS_STEP1_JSON}'
 with open(missing_file, "r", encoding="utf-8") as file:
     missing_data = json.load(file)
 
@@ -135,8 +138,6 @@ def OLD_append_additional_clauses(additional_file_path, styles, story):
     story.append(Spacer(1, 20))
 
 
-import re
-from reportlab.platypus import Paragraph, Spacer
 
 
 def append_additional_clauses_TXT(additional_file_path, styles, story):
@@ -215,8 +216,6 @@ def append_additional_clauses_MD(additional_file_path, styles, story):
     story.append(Paragraph(text, styles["ClauseBody"]))
     story.append(Spacer(1, 20))
 
-import json
-from reportlab.platypus import Paragraph, Spacer
 
 def append_additional_clauses_JSON(json_path, styles, story):
     """
@@ -345,7 +344,7 @@ def calculate_api_usage_price(input_tokens, output_tokens):
 
 
 # --- Step 2: Set up ReportLab PDF generation ---
-pdf_filename = f"Findings Overview - {SAMPLE_DOC.split(".")[0]}-{SHORT_MODEL_NAME}-{OPENAI_MODEL_MISSING}.pdf"
+pdf_filename = f"Findings Overview - {OPENAI_MODEL_MISSING}.pdf"
 doc = SimpleDocTemplate(pdf_filename, pagesize=letter,
                         rightMargin=40, leftMargin=40, topMargin=40, bottomMargin=40)
 
@@ -366,7 +365,7 @@ styles.add(ParagraphStyle(
 ))
 
 
-with open('src/models/V3_Frontend/temp/execuation_details.json', 'r', encoding='utf-8') as file:
+with open('V3_Frontend/temp/execuation_details.json', 'r', encoding='utf-8') as file:
     execution_details = json.load(file)
 
 # Totals : Time
@@ -409,7 +408,7 @@ append_missing_paragraphs(missing_data, styles, story)
 append_deviating_clauses(deviating_data, styles, story)
 
 # Append the additional clauses to the story
-additional_file_path = "/Users/luca/Documents/HSLU/Bachelor Thesis/thesis_luca_gafner/src/models/V3_Frontend/temp/3_V3_additional_clauses.json"
+additional_file_path = "V3_Frontend/temp/3_V3_additional_clauses.json"
 append_additional_clauses_JSON(additional_file_path, styles, story)
 
 story.append(Spacer(1, 20))

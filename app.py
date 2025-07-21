@@ -197,7 +197,10 @@ if uploaded_doc:
                         "-c", openai_model,  # -c "gpt-4.1-2025-04-14"
                         "-K", openai_api_key,
                     ]
-                    result = subprocess.run(cmd, capture_output=True, text=True)
+                    env = os.environ.copy()
+                    env["PYTHONPATH"] = os.pathsep.join(sys.path)
+
+                    result = subprocess.run(cmd, capture_output=True, text=True, env=env)
 
                     if result.returncode != 0:
                         st.error("❌ Pipeline failed!")

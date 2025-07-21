@@ -1,0 +1,25 @@
+{
+    "steps": [
+        {
+            "script": "/Users/luca/Documents/HSLU/Repository/Prototyp_MLLlegal/V3_Frontend/1_V3_RAG for top-k missing.py",
+            "time_seconds": 0,
+            "total_tokens": 0,
+            "input_tokens": 0,
+            "output_tokens": 0
+        },
+        {
+            "script": "/Users/luca/Documents/HSLU/Repository/Prototyp_MLLlegal/V3_Frontend/2_V3_deviatingClauses.py",
+            "time_seconds": 0,
+            "total_tokens": 0,
+            "input_tokens": 0,
+            "output_tokens": 0
+        },
+        {
+            "script": "/Users/luca/Documents/HSLU/Repository/Prototyp_MLLlegal/V3_Frontend/3_V3_AdditionalClauses.py",
+            "time_seconds": 0,
+            "total_tokens": 0,
+            "input_tokens": 0,
+            "output_tokens": 0
+        }
+    ]
+}

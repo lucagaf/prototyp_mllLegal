@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 # os.environ["PROCESS_STEP1_JSON"] = "V3-missing-o1-2024-12-17-Sample 10-K3.json"
 # os.environ["PROCESS_STEP2_JSON"] = "TEST - V3-missing-o1-2024-12-17-Sample 10-K3.json"
 # os.environ["OPENAI_MODEL_DEVIATING"] = "gpt-4o-2024-08-06" #"o1-2024-12-17"
@@ -14,6 +15,7 @@ OPENAI_MODEL_ADDITIONAL = os.environ.get("OPENAI_MODEL_ADDITIONAL")
 RETRIEVED_K = int(os.environ.get("RETRIEVED_K", 3))
 PROCESS_STEP1_JSON = os.environ.get("PROCESS_STEP1_JSON")
 PROCESS_STEP2_JSON = os.environ.get("PROCESS_STEP2_JSON")
+BASEDIR = Path(os.environ.get("BASEDIR"))
 
 # PRICE PER TOKEN
 MODEL_PRICING = {

@@ -12,6 +12,7 @@ import openai
 from dotenv import load_dotenv
 import json
 from Class_RetrievedClause import RetrievedClause
+from pathlib import Path
 current_dir = os.path.dirname(__file__)
 project_root = os.path.abspath(os.path.join(current_dir, "../../"))
 
@@ -19,12 +20,11 @@ if project_root not in sys.path:
     sys.path.insert(0, project_root)
 
 from utils import initialize_openai_client
-from config import SAMPLE_DOC, MODEL_NAME, DOC_PATH, OPENAI_MODEL_MISSING, RETRIEVED_K, PROCESS_STEP1_JSON
+from config import SAMPLE_DOC, MODEL_NAME, DOC_PATH, OPENAI_MODEL_MISSING, RETRIEVED_K, PROCESS_STEP1_JSON, BASEDIR
 
 EMBEDDING_MODEL = SentenceTransformer(MODEL_NAME)
 
 load_dotenv()
-
 
 
 def load_paragraphs(file_path):
@@ -173,9 +173,9 @@ if __name__ == "__main__":
     print(DOC_PATH)
     index, paragraphs = initialize_faiss_index(DOC_PATH, EMBEDDING_MODEL)
     openai_client = initialize_openai_client()
-    current_directory = os.path.dirname(__file__)
-    json_file_path = os.path.join(current_directory, "data/V3 - Template Clause MLL.json")
-    json_file_path = "data/V3 - Template Clause MLL.json"
+    #current_directory = os.path.dirname(__file__)
+    json_file_path =  BASEDIR / "data/V3 - Template Clause MLL.json"
+    #json_file_path = "data/V3 - Template Clause MLL.json"
     retrieved_clauses_list = extract_clauses_from_json(json_file_path)
 
     for clause_query in retrieved_clauses_list:
@@ -199,7 +199,7 @@ if __name__ == "__main__":
     opik_client.end()
     save_retrieved_clauses_to_json(retrieved_clauses_list, PROCESS_STEP1_JSON)
 
-    execution_details_path = 'V3_Frontend/temp/execuation_details.json'
+    execution_details_path = BASEDIR / 'V3_Frontend/temp/execuation_details.json'
     with open(execution_details_path, 'r+', encoding='utf-8') as file:
         execution_details = json.load(file)
         execution_details['steps'][0]['input_tokens'] = input_tokens

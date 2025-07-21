@@ -11,9 +11,11 @@ import subprocess
 import time
 import json
 import openai
-from path import Path
+#from path import Path
 from opik.integrations.openai import track_openai
 from opik import Opik
+from pathlib import Path
+
 
 def main():
     parser = argparse.ArgumentParser(
@@ -71,6 +73,11 @@ def main():
         default=None,
         help="OpenAI API key"
     )
+    parser.add_argument(
+        "--basedir",
+        default= None,
+        help="Basedir as Str"
+    )
 
     args = parser.parse_args()
 
@@ -80,6 +87,8 @@ def main():
         args.step1_json = f"V3-missing-{args.missing_model}-{sample}-K{args.retrieved_k}.json"
     if not args.step2_json:
         args.step2_json = f"V3-deviating-{args.deviating_model}-{sample}.json"
+    if args.basedir is None:
+        args.basedir = str(Path(__file__).resolve().parent.parent)
     #if not args.doc_path:
     #    args.doc_path = f"/Users/luca/Documents/HSLU/Bachelor Thesis/thesis_luca_gafner/data/raw/{args.sample_doc}"
 
@@ -94,6 +103,8 @@ def main():
     print(f"  Retrieved K        : {args.retrieved_k}")
     print(f"  Step 1 JSON Output : {args.step1_json}")
     print(f"  Step 2 JSON Output : {args.step2_json}")
+    print(f"  Base DIR : {args.basedir}")
+    print(f"  Base DIR : {type(args.basedir)}")
     print("")
 
     # Set the environment variables so they are available to the downstream Python modules
@@ -107,20 +118,20 @@ def main():
     os.environ["PROCESS_STEP1_JSON"] = args.step1_json
     os.environ["PROCESS_STEP2_JSON"] = args.step2_json
     os.environ["OPENAI_API_KEY"] = args.openai_key
+    os.environ["BASEDIR"] = args.basedir
 
     # Define the pipeline steps and their corresponding Python scripts
 
-
     pipeline_steps = [
-        ("Running Step 1: '1_V3_RAG for top-k missing.py'...", "V3_Frontend/1_V3_RAG for top-k missing.py"),
-        ("Running Step 2: '2_V3_deviatingClauses.py'...", "V3_Frontend/2_V3_deviatingClauses.py"),
-        ("Running Step 3: '3_V3_AdditionalClauses.py'...", "V3_Frontend/3_V3_AdditionalClauses.py")
+        ("Running Step 1: '1_V3_RAG for top-k missing.py'...", Path(args.basedir) / "V3_Frontend/1_V3_RAG for top-k missing.py"),
+        ("Running Step 2: '2_V3_deviatingClauses.py'...", Path(args.basedir) / "V3_Frontend/2_V3_deviatingClauses.py"),
+        ("Running Step 3: '3_V3_AdditionalClauses.py'...", Path(args.basedir) / "V3_Frontend/3_V3_AdditionalClauses.py")
     ]
     # 2) Prepare output JSON
     output_path = Path(
-        "V3_Frontend/temp/execuation_details.json"
-    )
+        args.basedir) / "V3_Frontend/temp/execuation_details.json"
     #output_path.parent.mkdir(parents=True, exist_ok=True)
+
 
     # Initialize file before running any steps
     # with output_path.open("w") as f:
@@ -130,7 +141,7 @@ def main():
 
     for message, script in pipeline_steps:
         step_record = {
-            "script": script,
+            "script": str(script),
             "time_seconds": 0,
             "total_tokens": 0,
             "input_tokens": 0,

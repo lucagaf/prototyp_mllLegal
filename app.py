@@ -22,6 +22,20 @@ from tempfile import NamedTemporaryFile
 
 # --------------  main page --------------
 st.set_page_config(page_title="Doc Analyzer", layout="wide")
+
+st.title("Dependency Check")
+
+st.write("### Installed packages")
+installed = subprocess.check_output([sys.executable, "-m", "pip", "freeze"]).decode()
+st.code(installed)
+
+st.write("### Test python-docx import")
+try:
+    from docx import Document
+    st.success("✅ python-docx is installed and importable!")
+except ModuleNotFoundError as e:
+    st.error(f"❌ python-docx NOT installed: {e}")
+
 st.title("Legal Document Analyzer")
 st.markdown("""
 Welcome to the Legal Document Analyzer. This tool helps users analyze legal documents—specifically NDAs—based on selected criteria.

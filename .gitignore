@@ -211,6 +211,7 @@ __marimo__/
 data/raw/*
 .idea/
 V3_Frontend/temp/*
+!V3_Frontend/temp/execuation_details.json
 
 
 

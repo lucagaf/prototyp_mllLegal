@@ -19,7 +19,7 @@ project_root = os.path.abspath(os.path.join(current_dir, "../../"))
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
 
-from utils import initialize_openai_client
+from utils import initialize_openai_client, initialize_opik_client
 from config import SAMPLE_DOC, MODEL_NAME, DOC_PATH, OPENAI_MODEL_MISSING, RETRIEVED_K, PROCESS_STEP1_JSON, BASEDIR
 
 EMBEDDING_MODEL = SentenceTransformer(MODEL_NAME)
@@ -183,7 +183,7 @@ if __name__ == "__main__":
         clause_query.retrieved_clauses = similar_clauses
 
     thread_id = f"TEST Identify Missing / Entailment - 1_V3_RAG - {SAMPLE_DOC}"
-    opik_client =client = opik.Opik()
+    opik_client = initialize_opik_client()
 
     input_tokens = 0
     output_tokens = 0

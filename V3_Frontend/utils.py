@@ -5,8 +5,12 @@ from opik.integrations.openai import track_openai
 
 def initialize_openai_client():
     """Initializes the OpenAI client with the provided API key."""
-    client = Opik(project_name="BAA Thesis")
-    openai.api_key = os.getenv('OPENAI_API_KEY')
-    openai_client = openai.OpenAI()
-    openai_client = track_openai(openai_client)
+    #client = Opik(project_name="BAA Thesis")
+    api_key = os.getenv('OPENAI_API_KEY')
+    if not api_key:
+        raise EnvironmentError("OPENAI_API_KEY not found in environment variables.")
+    #openai.api_key = api_key
+    #openai_client = openai.OpenAI()
+    client = openai.OpenAI(api_key=api_key)
+    openai_client = track_openai(client)
     return openai_client

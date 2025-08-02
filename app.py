@@ -23,18 +23,6 @@ from tempfile import NamedTemporaryFile
 # --------------  main page --------------
 st.set_page_config(page_title="Doc Analyzer", layout="wide")
 
-st.title("Dependency Check")
-
-st.write(f"Python executable: {sys.executable}")
-st.write(f"Python version: {sys.version}")
-st.write(f"sys.path: {sys.path}")
-
-try:
-    import docx
-    st.write("docx package found!")
-except ImportError:
-    st.write("docx package NOT found in this environment.")
-
 st.title("Legal Document Analyzer")
 st.markdown("""
 Welcome to the Legal Document Analyzer. This tool helps users analyze legal documents—specifically NDAs—based on selected criteria.
@@ -44,8 +32,8 @@ Developed as part of a Bachelor's thesis at HSLU by Luca Gafner.
 with st.expander("How does it work?"):
     st.markdown("""
     1. **Choose the Contract Type**: Currently, only NDAs are supported.
-    2. **Select User Role**: Developer of this interface can choose the role "Developer" 
-    3. **Set Parameters**: Choose whether the NDA is bilateral or unilateral, SIX listing and desired formulation.
+    2. **Select AI model**: o1 and GPT-4.1 models performed the best in the bachelor thesis. Since the o1 is a reasoning model, it takes around 10 minutes to perform the analysis, whereas the GPT-4.1 takes around 2 minutes. 
+    3. **Set Parameters**: (⚠️ Not implemented yet) Choose whether the NDA is bilateral or unilateral, SIX listing and desired formulation. Furthermore also set anonymization parameters.
     4. **Upload the NDA File**: Upload a `.doc` or `.docx` file for analysis.
     5. **Run Analysis**: The AI will process and highlight key insights.
     """)

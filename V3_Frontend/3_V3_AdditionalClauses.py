@@ -13,7 +13,7 @@ current_dir = os.path.dirname(__file__)
 project_root = os.path.abspath(os.path.join(current_dir, "../../"))
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
-from utils import initialize_openai_client
+from utils import initialize_openai_client, initialize_opik_client
 
 # Function to load the template NDA from a JSON file.
 def load_template_nda(json_path):
@@ -56,7 +56,7 @@ def identify_additional_clauses(
     The assistant's response with identified additional clauses.
     """
     # Initialize prompt from Opik
-    client = opik.Opik()
+    client = initialize_opik_client()
     openai_client = initialize_openai_client()
 
     prompt = client.get_prompt(name="V1.2 - Additional")

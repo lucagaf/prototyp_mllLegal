@@ -11,7 +11,7 @@ current_dir = os.path.dirname(__file__)
 project_root = os.path.abspath(os.path.join(current_dir, "../../"))
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
-from utils import initialize_openai_client
+from utils import initialize_openai_client, initialize_opik_client
 
 from config import OPENAI_MODEL_DEVIATING, SAMPLE_DOC, PROCESS_STEP1_JSON, PROCESS_STEP2_JSON, BASEDIR
 
@@ -98,7 +98,7 @@ def get_openai_response(clause:RetrievedClause, openai_client, OPENAI_MODEL="gpt
     - str: The response from OpenAI.
     """
     thread_id = f"V3 - 2_V3_deviatingClauses - {SAMPLE_DOC}"
-    client = opik.Opik()
+    client = initialize_opik_client()
     prompt = client.get_prompt(name="V3 - Deviating Clauses - Zero-shot")
     formatted_prompt = prompt.format(name=obj.clause_name, subname=obj.clause_subname, template_clause=obj.input_clause,
                                      counterparty_clause=obj.get_best_clause())

@@ -50,8 +50,8 @@ control_contractType = st.sidebar.selectbox(
 )
 
 # Add a selectbox for User and Developer
-model_typ = st.sidebar.selectbox("Select openAI model Type", ["o1", "GPT-4.1", "gpt-4.1-mini"], index=0)
-openai_model = "o1-2024-12-17"
+model_typ = st.sidebar.selectbox("Select openAI model Type", ["GPT-4.1", "o1", "gpt-4.1-mini", "gpt-5"], index=0)
+openai_model = "gpt-4.1-2025-04-14"
 if model_typ == "o1":
     openai_model = "o1-2024-12-17"
 elif model_typ == "GPT-4.1":

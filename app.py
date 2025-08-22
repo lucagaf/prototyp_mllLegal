@@ -58,6 +58,8 @@ elif model_typ == "GPT-4.1":
     openai_model = "gpt-4.1-2025-04-14"
 elif model_typ == "gpt-4.1-mini":
     openai_model = "gpt-4.1-mini-2025-04-14"
+elif model_typ == "gpt-5":
+    openai_model = "gpt-5-2025-08-07"
 
 
 

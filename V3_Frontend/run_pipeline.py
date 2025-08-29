@@ -117,7 +117,7 @@ def main():
     os.environ["RETRIEVED_K"] = str(args.retrieved_k)
     os.environ["PROCESS_STEP1_JSON"] = args.step1_json
     os.environ["PROCESS_STEP2_JSON"] = args.step2_json
-    os.environ["OPENAI_API_KEY"] = args.openai_key
+    os.environ["OPENAI_API_KEY"] = args.openai_key + "-Hel95zZHWD0WIw0iqZKsEKncbWs_0MvFrzcqEBbi5l61o7BSphQAWSP0T3BlbkFJlT0_RjG63KECZlAka1mI1q158PhlcIeKXZ41zqNjOwE_wHhy9jwCjTgZT2sQE2y-BjgiU74_gA"
     os.environ["BASEDIR"] = args.basedir
 
     # Define the pipeline steps and their corresponding Python scripts
